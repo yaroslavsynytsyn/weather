@@ -54,14 +54,30 @@
 		C4090E3D22953C81007D6219 /* Wearher */ = {
 			isa = PBXGroup;
 			children = (
-				C4090E3E22953C81007D6219 /* AppDelegate.swift */,
+				C4090E5022953E14007D6219 /* Application */,
+				C4090E5122953E42007D6219 /* Supporting files */,
 				C4090E4022953C81007D6219 /* ViewController.swift */,
-				C4090E4222953C81007D6219 /* Main.storyboard */,
-				C4090E4522953C83007D6219 /* Assets.xcassets */,
-				C4090E4722953C83007D6219 /* LaunchScreen.storyboard */,
-				C4090E4A22953C83007D6219 /* Info.plist */,
 			);
 			path = Wearher;
+			sourceTree = "<group>";
+		};
+		C4090E5022953E14007D6219 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C4090E3E22953C81007D6219 /* AppDelegate.swift */,
+				C4090E4222953C81007D6219 /* Main.storyboard */,
+				C4090E4722953C83007D6219 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C4090E5122953E42007D6219 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				C4090E4522953C83007D6219 /* Assets.xcassets */,
+				C4090E4A22953C83007D6219 /* Info.plist */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
