@@ -25,7 +25,6 @@ class WeatherViewController: UIViewController {
     imgView.image = UIImage(named: "rain")
     imgView.translatesAutoresizingMaskIntoConstraints = false
     imgView.sizeToFit()
-    
     return imgView
   }()
   
@@ -84,6 +83,11 @@ class WeatherViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let icon = WeatherIconManager.ClearDay.image
+    let currentWeather = CurrentWeather(temperature: 10.0, appearentTemperature: 5.0, humidity: 30, pressure: 250, icon: icon)
+    
+    updateUIWith(currentWeather: currentWeather)
+    
     let center = view.bounds.size.width / 2
     print("h = ", cityNameLable.bounds.size.width / 2)
     
@@ -96,9 +100,9 @@ class WeatherViewController: UIViewController {
     view.addSubview(imgViewWeather)
     imgViewWeather.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60).isActive = true
     imgViewWeather.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -60).isActive = true
-    imgViewWeather.topAnchor.constraint(equalTo: cityNameLable.bottomAnchor, constant: 10).isActive = true
-    imgViewWeather.widthAnchor.constraint(equalToConstant: view.bounds.size.width / 1.3).isActive = true
-    imgViewWeather.heightAnchor.constraint(equalToConstant: view.bounds.size.width / 1.3).isActive = true
+    imgViewWeather.topAnchor.constraint(equalTo: cityNameLable.bottomAnchor, constant: 20).isActive = true
+    imgViewWeather.widthAnchor.constraint(equalToConstant: view.bounds.size.width / 1.3 - 60).isActive = true
+    imgViewWeather.heightAnchor.constraint(equalToConstant: view.bounds.size.width / 1.3 - 60).isActive = true
     
     view.addSubview(pressureLable)
     pressureLable.leftAnchor.constraint(equalTo: imgViewWeather.leftAnchor).isActive = true
@@ -109,7 +113,7 @@ class WeatherViewController: UIViewController {
     humidityLable.topAnchor.constraint(equalTo: pressureLable.topAnchor).isActive = true
     
     view.addSubview(temperaturelable)
-    temperaturelable.topAnchor.constraint(equalTo: humidityLable.bottomAnchor, constant: 10).isActive = true
+    temperaturelable.topAnchor.constraint(equalTo: humidityLable.bottomAnchor, constant: 20).isActive = true
     temperaturelable.leftAnchor.constraint(equalTo: view.leftAnchor, constant: center - temperaturelable.bounds.size.width / 2).isActive = true
     //temperaturelable.leftAnchor.constraint(equalTo: imgViewWeather.leftAnchor).isActive = true
     //temperaturelable.rightAnchor.constraint(equalTo: imgViewWeather.rightAnchor).isActive = true
@@ -119,9 +123,17 @@ class WeatherViewController: UIViewController {
     feelsTemperature.leftAnchor.constraint(equalTo: view.leftAnchor, constant: center - feelsTemperature.bounds.size.width / 2).isActive = true
     
     view.addSubview(buttomRefresh)
-    buttomRefresh.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+    buttomRefresh.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
     buttomRefresh.leftAnchor.constraint(equalTo: view.leftAnchor, constant: center - buttomRefresh.bounds.size.width / 2).isActive = true
     
+  }
+  
+  func updateUIWith(currentWeather: CurrentWeather) {
+    self.imgViewWeather.image = currentWeather.icon
+    self.pressureLable.text = currentWeather.pressureString
+    self.temperaturelable.text = currentWeather.temperatureString
+    self.feelsTemperature.text = currentWeather.apperentTemperatureString
+    self.humidityLable.text = currentWeather.humidityString
   }
   
 }
